@@ -6,11 +6,12 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { HeroComponent } from '../../components/hero/hero.component';
 import { AboutComponent } from '../../components/about/about.component';
 import { ExperienceComponent } from '../../components/experience/experience.component';
+import { EducationComponent } from '../../components/education/education.component';
 import { ProjectsComponent } from '../../components/projects/projects.component';
 import { ContactComponent } from '../../components/contact/contact.component';
 import { LenisService } from '../../services/lenis.service';
 
-const SECTION_IDS = ['home', 'about', 'experience', 'projects', 'contact'] as const;
+const SECTION_IDS = ['home', 'about', 'experience', 'education', 'projects', 'contact'] as const;
 type SectionId = typeof SECTION_IDS[number];
 
 @Component({
@@ -20,6 +21,7 @@ type SectionId = typeof SECTION_IDS[number];
     HeroComponent,
     AboutComponent,
     ExperienceComponent,
+    EducationComponent,
     ProjectsComponent,
     ContactComponent
   ],

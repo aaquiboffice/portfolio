@@ -1,0 +1,218 @@
+:host { display: contents; }
+
+.edu-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 36px;
+  align-items: start;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 44px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s var(--ease), border-color 0.3s ease, background-color 0.4s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at top right, rgba(6, 182, 212, 0.12), transparent 60%);
+    pointer-events: none;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-strong);
+  }
+
+  > * { position: relative; z-index: 1; }
+}
+
+.edu-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  background: var(--accent-grad);
+  color: #fff;
+  box-shadow:
+    0 12px 28px -10px rgba(139, 92, 246, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.edu-content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+.edu-meta-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.degree-label {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--accent-1);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.period-badge {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.edu-field {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.edu-school {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.school-name {
+  font-size: 15px;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.school-uni {
+  font-size: 13.5px;
+  color: var(--text-soft);
+}
+
+.edu-footer {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 28px;
+  align-items: center;
+  margin-top: 14px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+}
+
+.cgpa-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 22px;
+  border-radius: 14px;
+  background: var(--accent-grad-soft);
+  border: 1px solid var(--border-strong);
+}
+
+.cgpa-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-dim);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.cgpa-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.9rem;
+  background: var(--accent-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.1;
+  margin-top: 2px;
+}
+
+.highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  li {
+    padding: 6px 12px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 12px;
+    color: var(--text-soft);
+    font-family: var(--font-mono);
+    transition: all 0.25s ease;
+  }
+}
+.edu-card:hover .highlights li {
+  border-color: var(--accent-1);
+  color: var(--text);
+}
+
+/* Tablet */
+@media (max-width: 860px) {
+  .edu-card { padding: 36px 32px; gap: 28px; }
+  .edu-icon { width: 56px; height: 56px; border-radius: 14px; }
+  .edu-icon svg { width: 28px; height: 28px; }
+  .edu-field { font-size: 1.5rem; }
+  .cgpa-value { font-size: 1.7rem; }
+}
+
+/* Large mobile */
+@media (max-width: 640px) {
+  .edu-card {
+    grid-template-columns: 1fr;
+    padding: 28px 22px;
+    gap: 22px;
+  }
+  .edu-icon { width: 52px; height: 52px; border-radius: 13px; }
+  .edu-icon svg { width: 26px; height: 26px; }
+  .edu-field { font-size: 1.35rem; }
+  .edu-meta-top { gap: 10px; }
+  .degree-label { font-size: 11.5px; }
+  .period-badge { font-size: 11px; padding: 5px 10px; }
+  .school-name { font-size: 14px; }
+  .school-uni { font-size: 12.5px; }
+  .edu-footer {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding-top: 18px;
+  }
+  .cgpa-block {
+    justify-self: start;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 10px;
+    padding: 12px 18px;
+  }
+  .cgpa-value { font-size: 1.5rem; }
+  .highlights li { font-size: 11.5px; padding: 5px 10px; }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .edu-card { padding: 24px 18px; }
+  .edu-field { font-size: 1.2rem; }
+  .cgpa-block { padding: 10px 16px; }
+  .cgpa-value { font-size: 1.4rem; }
+}
+
+/* Tiny phones */
+@media (max-width: 360px) {
+  .edu-card { padding: 22px 14px; }
+}

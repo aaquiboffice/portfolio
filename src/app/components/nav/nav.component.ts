@@ -27,8 +27,9 @@ export class NavComponent {
     { num: '01.', label: 'Home',       route: '/',           id: 'home' },
     { num: '02.', label: 'About',      route: '/about',      id: 'about' },
     { num: '03.', label: 'Experience', route: '/experience', id: 'experience' },
-    { num: '04.', label: 'Projects',   route: '/projects',   id: 'projects' },
-    { num: '05.', label: 'Contact',    route: '/contact',    id: 'contact' }
+    { num: '04.', label: 'Education',  route: '/education',  id: 'education' },
+    { num: '05.', label: 'Projects',   route: '/projects',   id: 'projects' },
+    { num: '06.', label: 'Contact',    route: '/contact',    id: 'contact' }
   ];
 
   @HostListener('window:scroll')

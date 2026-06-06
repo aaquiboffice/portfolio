@@ -1,0 +1,47 @@
+<section class="section education" id="education">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num">04</div>
+      <h2 class="section-title"><span class="gradient-text">Education</span></h2>
+      <div class="section-line"></div>
+    </div>
+
+    @for (item of items; track item.school) {
+      <article class="edu-card" appReveal>
+        <div class="edu-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
+        </div>
+
+        <div class="edu-content">
+          <div class="edu-meta-top">
+            <span class="degree-label">{{ item.degree }}</span>
+            <span class="period-badge">{{ item.period }}</span>
+          </div>
+
+          <h3 class="edu-field">{{ item.field }}</h3>
+
+          <div class="edu-school">
+            <div class="school-name">{{ item.school }}</div>
+            <div class="school-uni">{{ item.university }} · {{ item.location }}</div>
+          </div>
+
+          <div class="edu-footer">
+            <div class="cgpa-block">
+              <span class="cgpa-label">CGPA</span>
+              <span class="cgpa-value">{{ item.cgpa }}</span>
+            </div>
+
+            <ul class="highlights">
+              @for (h of item.highlights; track h) {
+                <li>{{ h }}</li>
+              }
+            </ul>
+          </div>
+        </div>
+      </article>
+    }
+  </div>
+</section>

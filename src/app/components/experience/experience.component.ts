@@ -2,15 +2,12 @@ import { Component } from '@angular/core';
 import { RevealDirective } from '../../directives/reveal.directive';
 
 interface Experience {
-  type: 'work' | 'education';
   title: string;
   company: string;
   location?: string;
   period: string;
-  bullets?: string[];
-  description?: string;
-  tech?: string[];
-  showLine?: boolean;
+  bullets: string[];
+  tech: string[];
 }
 
 @Component({
@@ -23,7 +20,6 @@ interface Experience {
 export class ExperienceComponent {
   readonly items: Experience[] = [
     {
-      type: 'work',
       title: 'MEAN Stack Developer',
       company: 'Dealmoney Commodities Pvt Ltd.',
       location: 'Thane, Maharashtra',
@@ -37,15 +33,7 @@ export class ExperienceComponent {
         'Collaborated with UI/UX designers and backend teams to deliver features on time.',
         'Followed Git best practices, performed code reviews, and wrote documentation.'
       ],
-      tech: ['Angular', 'Node.js', 'Express', 'MongoDB', 'TypeScript', 'REST APIs', 'Git'],
-      showLine: true
-    },
-    {
-      type: 'education',
-      title: 'Bachelor of Management Studies — Marketing',
-      company: 'Mahendra Laxman Mhatre Degree College · University of Mumbai',
-      period: '2022 — 2025',
-      description: 'Graduated with CGPA <strong>7.13</strong>. Bhiwandi, Maharashtra.'
+      tech: ['Angular', 'Node.js', 'Express', 'MongoDB', 'TypeScript', 'REST APIs', 'Git']
     }
   ];
 }

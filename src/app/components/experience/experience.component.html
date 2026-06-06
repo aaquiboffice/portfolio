@@ -11,7 +11,6 @@
         <div class="timeline-item" appReveal>
           <div class="timeline-marker">
             <div class="marker-dot"></div>
-            @if (item.showLine) { <div class="marker-line"></div> }
           </div>
           <div class="timeline-content">
             <div class="timeline-card">
@@ -26,25 +25,17 @@
                 <span class="period">{{ item.period }}</span>
               </div>
 
-              @if (item.bullets) {
-                <ul class="timeline-list">
-                  @for (bullet of item.bullets; track bullet) {
-                    <li [innerHTML]="bullet"></li>
-                  }
-                </ul>
-              }
+              <ul class="timeline-list">
+                @for (bullet of item.bullets; track bullet) {
+                  <li [innerHTML]="bullet"></li>
+                }
+              </ul>
 
-              @if (item.description) {
-                <p class="edu-note" [innerHTML]="item.description"></p>
-              }
-
-              @if (item.tech) {
-                <div class="tech-row">
-                  @for (t of item.tech; track t) {
-                    <span>{{ t }}</span>
-                  }
-                </div>
-              }
+              <div class="tech-row">
+                @for (t of item.tech; track t) {
+                  <span>{{ t }}</span>
+                }
+              </div>
             </div>
           </div>
         </div>
