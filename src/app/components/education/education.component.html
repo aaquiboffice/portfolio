@@ -1,13 +1,14 @@
 <section class="section education" id="education">
   <div class="container">
-    <div class="section-head">
+    <div class="section-head" data-watermark="Degree">
       <div class="section-num">04</div>
       <h2 class="section-title"><span class="gradient-text">Education</span></h2>
       <div class="section-line"></div>
     </div>
 
     @for (item of items; track item.school) {
-      <article class="edu-card" appReveal>
+      <article class="edu-card" appReveal appTilt [tiltMax]="5">
+        <div class="edu-spot"></div>
         <div class="edu-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>

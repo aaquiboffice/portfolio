@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RevealDirective } from '../../directives/reveal.directive';
+import { TiltDirective } from '../../directives/tilt.directive';
 
 interface Education {
   degree: string;
@@ -15,7 +16,7 @@ interface Education {
 @Component({
   selector: 'app-education',
   standalone: true,
-  imports: [RevealDirective],
+  imports: [RevealDirective, TiltDirective],
   templateUrl: './education.component.html',
   styleUrl: './education.component.scss'
 })

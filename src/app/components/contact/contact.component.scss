@@ -10,6 +10,9 @@
   border-radius: var(--radius-lg);
   position: relative;
   overflow: hidden;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: border-color 0.3s ease, box-shadow 0.4s ease;
 
   &::before {
     content: '';
@@ -17,6 +20,30 @@
     inset: 0;
     background: radial-gradient(ellipse at top, rgba(139,92,246,0.15), transparent 70%);
     pointer-events: none;
+    z-index: 0;
+  }
+
+  .contact-spot {
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: 0;
+    background:
+      radial-gradient(
+        500px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+        rgba(139, 92, 246, 0.18),
+        rgba(244, 114, 182, 0.08) 40%,
+        transparent 70%
+      );
+  }
+
+  &.is-tilting {
+    border-color: var(--accent-1);
+    box-shadow: 0 50px 100px -30px rgba(139, 92, 246, 0.5);
+    .contact-spot { opacity: 1; }
   }
 
   > * { position: relative; z-index: 1; }

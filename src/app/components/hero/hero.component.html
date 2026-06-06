@@ -4,17 +4,27 @@
       <span class="pulse"></span> Available for new opportunities
     </div>
 
-    <h1 class="hero-title" appReveal>
-      <span class="line">Hi, I'm <span class="gradient-text">Aaquib</span></span>
+    <h1 class="hero-title">
       <span class="line">
-        I build
+        @for (c of line1; track $index) {
+          <span class="char" [style.animation-delay.ms]="$index * 35">{{ c.isSpace ? ' ' : c.ch }}</span>
+        }
+        <span class="char">&nbsp;</span>
+        <span class="gradient-text name">Aaquib</span>
+      </span>
+      <span class="line line-2">
+        <span class="static-prefix">I build</span>
         <span class="rotating-text"
               [style.opacity]="rotatingVisible() ? 1 : 0"
               [style.transform]="rotatingVisible() ? 'translateY(0)' : 'translateY(-10px)'">
           {{ rotatingWord() }}
         </span>
       </span>
-      <span class="line">web experiences.</span>
+      <span class="line line-3">
+        @for (c of line3; track $index) {
+          <span class="char" [style.animation-delay.ms]="900 + $index * 25">{{ c.isSpace ? ' ' : c.ch }}</span>
+        }
+      </span>
     </h1>
 
     <p class="hero-sub" appReveal>
@@ -23,13 +33,13 @@
     </p>
 
     <div class="hero-cta" appReveal>
-      <a routerLink="/projects" class="btn btn-primary">
+      <a routerLink="/projects" class="btn btn-primary" [appMagnetic]="0.3">
         <span>View My Work</span>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M5 12h14M12 5l7 7-7 7"/>
         </svg>
       </a>
-      <a routerLink="/contact" class="btn btn-ghost">Get in Touch</a>
+      <a routerLink="/contact" class="btn btn-ghost" [appMagnetic]="0.25">Get in Touch</a>
     </div>
 
     <div class="hero-stats" appReveal>

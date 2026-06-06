@@ -1,7 +1,21 @@
 <div class="bg-grid"></div>
+
 <div class="bg-orbs" #orbs>
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
   <div class="orb orb-3"></div>
 </div>
-<div class="cursor-glow" #cursorGlow></div>
+
+<div class="bg-glyphs" aria-hidden="true">
+  @for (g of glyphs; track $index) {
+    <span class="bg-glyph"
+          [style.left.%]="g.x"
+          [style.top.%]="g.y"
+          [style.font-size.px]="g.size"
+          [style.animation-delay.s]="g.delay"
+          [style.animation-duration.s]="g.dur"
+          [style.transform]="'rotate(' + g.rot + 'deg)'">
+      {{ g.ch }}
+    </span>
+  }
+</div>

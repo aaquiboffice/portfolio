@@ -1,6 +1,6 @@
-import { Component, HostListener, inject, signal } from '@angular/core';
+import { Component, HostListener, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ThemeService } from '../../services/theme.service';
+import { MagneticDirective } from '../../directives/magnetic.directive';
 
 interface NavLink {
   num: string;
@@ -12,13 +12,11 @@ interface NavLink {
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, MagneticDirective],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.scss'
 })
 export class NavComponent {
-  readonly themeService = inject(ThemeService);
-
   readonly scrolled = signal(false);
   readonly menuOpen = signal(false);
   readonly activeId = signal('home');

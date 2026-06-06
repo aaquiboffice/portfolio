@@ -115,9 +115,11 @@
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  transition: all 0.4s var(--ease);
+  transition: border-color 0.3s ease, background-color 0.3s ease;
   position: relative;
   overflow: hidden;
+  transform-style: preserve-3d;
+  will-change: transform;
 
   &::before {
     content: '';
@@ -126,20 +128,81 @@
     background: var(--accent-grad-soft);
     opacity: 0;
     transition: opacity 0.4s ease;
+    z-index: 0;
   }
-  &:hover {
-    border-color: var(--border-strong);
-    transform: translateY(-6px);
-  }
-  &:hover::before { opacity: 1; }
 
-  > * { position: relative; z-index: 1; }
+  /* Specular spotlight that follows the cursor */
+  .skill-spot {
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: 0;
+    background:
+      radial-gradient(
+        260px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+        rgba(139, 92, 246, 0.22),
+        rgba(6, 182, 212, 0.10) 35%,
+        transparent 65%
+      );
+  }
+
+  &.is-tilting {
+    border-color: var(--accent-1);
+    background: var(--surface-2);
+    box-shadow: 0 30px 60px -30px rgba(139, 92, 246, 0.5);
+
+    &::before { opacity: 1; }
+    .skill-spot { opacity: 1; }
+  }
+
+  > .skill-icon,
+  > h4,
+  > .skill-tags { position: relative; z-index: 2; }
 }
 
 .skill-icon {
-  font-size: 28px;
-  margin-bottom: 14px;
-  display: inline-block;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--accent-grad-soft);
+  border: 1px solid var(--border);
+  color: var(--accent-1);
+  margin-bottom: 18px;
+  transition: transform 0.45s var(--ease), background 0.4s ease, border-color 0.3s ease, color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  svg {
+    width: 22px;
+    height: 22px;
+    display: block;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.5s var(--ease);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--accent-grad);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+}
+
+.skill-card:hover .skill-icon {
+  border-color: transparent;
+  color: #fff;
+  transform: rotate(-6deg) scale(1.05);
+
+  &::before { opacity: 1; }
+  svg { transform: rotate(6deg); }
 }
 
 .skill-card h4 {
@@ -165,6 +228,7 @@
     transition: all 0.25s ease;
   }
 }
+.skill-card.is-tilting .skill-tags span,
 .skill-card:hover .skill-tags span {
   border-color: var(--accent-1);
   color: var(--text);

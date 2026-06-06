@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { RevealDirective } from '../../directives/reveal.directive';
+import { TiltDirective } from '../../directives/tilt.directive';
+
+type SkillIcon = 'frontend' | 'backend' | 'languages' | 'database' | 'tools' | 'concepts';
 
 interface SkillGroup {
-  icon: string;
+  icon: SkillIcon;
   title: string;
   tags: string[];
 }
@@ -16,7 +19,7 @@ interface MetaItem {
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [RevealDirective],
+  imports: [RevealDirective, TiltDirective],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
   preserveWhitespaces: true
@@ -30,11 +33,11 @@ export class AboutComponent {
   ];
 
   readonly skills: SkillGroup[] = [
-    { icon: '🎨', title: 'Frontend',  tags: ['Angular', 'Angular Material', 'Bootstrap', 'Tailwind CSS', 'SASS/LESS', 'GSAP'] },
-    { icon: '⚙️', title: 'Backend',   tags: ['Node.js', 'Express.js', 'REST APIs', 'Nginx'] },
-    { icon: '💻', title: 'Languages', tags: ['TypeScript', 'JavaScript', 'HTML5', 'CSS3'] },
-    { icon: '🗄️', title: 'Database',  tags: ['MongoDB', 'Mongoose'] },
-    { icon: '🛠️', title: 'Tools',     tags: ['Git', 'Postman', 'VS Code', 'npm'] },
-    { icon: '🚀', title: 'Concepts',  tags: ['RxJS', 'Routing & Guards', 'Lazy Loading', 'Auth', 'State Mgmt'] }
+    { icon: 'frontend',  title: 'Frontend',  tags: ['Angular', 'Angular Material', 'Bootstrap', 'Tailwind CSS', 'SASS/LESS', 'GSAP'] },
+    { icon: 'backend',   title: 'Backend',   tags: ['Node.js', 'Express.js', 'REST APIs', 'Nginx'] },
+    { icon: 'languages', title: 'Languages', tags: ['TypeScript', 'JavaScript', 'HTML5', 'CSS3'] },
+    { icon: 'database',  title: 'Database',  tags: ['MongoDB', 'Mongoose'] },
+    { icon: 'tools',     title: 'Tools',     tags: ['Git', 'Postman', 'VS Code', 'npm'] },
+    { icon: 'concepts',  title: 'Concepts',  tags: ['RxJS', 'Routing & Guards', 'Lazy Loading', 'Auth', 'State Mgmt'] }
   ];
 }

@@ -1,6 +1,33 @@
 <app-hero />
+
+<app-marquee
+  [items]="heroMarquee"
+  [duration]="40"
+  size="lg"
+  variant="outlined"
+  separator="·" />
+
 <app-about />
+
 <app-experience />
+
+<app-marquee
+  [items]="midMarquee"
+  [duration]="32"
+  size="xl"
+  variant="gradient"
+  separator="✦"
+  [reverse]="true" />
+
 <app-education />
+
 <app-projects />
+
+<app-marquee
+  [items]="outroMarquee"
+  [duration]="36"
+  size="lg"
+  variant="outlined"
+  separator="→" />
+
 <app-contact />

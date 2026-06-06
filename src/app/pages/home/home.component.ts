@@ -9,6 +9,7 @@ import { ExperienceComponent } from '../../components/experience/experience.comp
 import { EducationComponent } from '../../components/education/education.component';
 import { ProjectsComponent } from '../../components/projects/projects.component';
 import { ContactComponent } from '../../components/contact/contact.component';
+import { MarqueeComponent } from '../../components/marquee/marquee.component';
 import { LenisService } from '../../services/lenis.service';
 
 const SECTION_IDS = ['home', 'about', 'experience', 'education', 'projects', 'contact'] as const;
@@ -23,7 +24,8 @@ type SectionId = typeof SECTION_IDS[number];
     ExperienceComponent,
     EducationComponent,
     ProjectsComponent,
-    ContactComponent
+    ContactComponent,
+    MarqueeComponent
   ],
   templateUrl: './home.component.html'
 })
@@ -32,6 +34,23 @@ export class HomeComponent implements OnInit, AfterViewInit {
   private readonly zone = inject(NgZone);
   private readonly destroyRef = inject(DestroyRef);
   private readonly lenis = inject(LenisService);
+
+  readonly heroMarquee = [
+    'Angular', 'Node.js', 'Express', 'MongoDB', 'TypeScript',
+    'RxJS', 'REST APIs', 'SCSS', 'Tailwind', 'Git'
+  ];
+
+  readonly midMarquee = [
+    'MEAN Stack', 'UI / UX Focused', 'Clean Code',
+    'Performance', 'Based in Mumbai', 'Open to Work'
+  ];
+
+  readonly outroMarquee = [
+    "Let's Build Something Great",
+    "Available for Hire",
+    "Portfolio · 2026",
+    "Crafted with Angular"
+  ];
 
   private lastSyncedPath = '';
   private suppressScrollSpyUntil = 0;

@@ -1,0 +1,31 @@
+@if (!removed()) {
+  <div class="preloader" [class.hiding]="hiding()">
+    <div class="preloader-inner">
+      <div class="preloader-logo">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="34" height="34" fill="none">
+            <path d="M5 19 L12 5 L19 19 M8.2 14 L15.8 14"
+                  stroke="white" stroke-width="2.6"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <div class="brand-text">
+          <span class="brand-name"><span>aaquib</span><span class="dot">.</span><span class="tld">dev</span></span>
+          <span class="brand-sub">PORTFOLIO · 2026</span>
+        </div>
+      </div>
+
+      <div class="progress-row">
+        <span class="loading-label">Loading experience</span>
+        <span class="progress-num">{{ progress() }}<span class="pct">%</span></span>
+      </div>
+
+      <div class="progress-bar-wrap">
+        <div class="progress-bar" [style.width.%]="progress()"></div>
+      </div>
+    </div>
+
+    <div class="curtain top"></div>
+    <div class="curtain bottom"></div>
+  </div>
+}

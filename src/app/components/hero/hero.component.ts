@@ -3,6 +3,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { interval } from 'rxjs';
 import { RevealDirective } from '../../directives/reveal.directive';
+import { MagneticDirective } from '../../directives/magnetic.directive';
 
 interface Stat {
   target: number;
@@ -12,15 +13,24 @@ interface Stat {
   suffix: string;
 }
 
+interface Char {
+  ch: string;
+  isSpace: boolean;
+}
+
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [RevealDirective, RouterLink],
+  imports: [RevealDirective, MagneticDirective, RouterLink],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss'
 })
 export class HeroComponent implements OnInit, AfterViewInit {
   private readonly destroyRef = inject(DestroyRef);
+
+  /** Split title lines into characters for staggered reveal. */
+  readonly line1: Char[] = this.split("Hi, I'm");
+  readonly line3: Char[] = this.split('web experiences.');
 
   readonly words = ['scalable', 'beautiful', 'fast', 'modern', 'reliable'];
   readonly rotatingWord = signal(this.words[0]);
@@ -61,6 +71,10 @@ export class HeroComponent implements OnInit, AfterViewInit {
 
     this.statEls.forEach(ref => observer.observe(ref.nativeElement));
     this.destroyRef.onDestroy(() => observer.disconnect());
+  }
+
+  private split(text: string): Char[] {
+    return Array.from(text).map(ch => ({ ch, isSpace: ch === ' ' }));
   }
 
   private animateStat(index: number): void {

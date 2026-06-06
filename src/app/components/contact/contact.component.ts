@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RevealDirective } from '../../directives/reveal.directive';
+import { MagneticDirective } from '../../directives/magnetic.directive';
+import { TiltDirective } from '../../directives/tilt.directive';
 
 interface ContactLink {
   href: string;
@@ -11,7 +13,7 @@ interface ContactLink {
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [RevealDirective],
+  imports: [RevealDirective, MagneticDirective, TiltDirective],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })

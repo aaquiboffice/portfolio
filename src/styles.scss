@@ -1,64 +1,8 @@
 /* ========== Reset ========== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ========== Theme tokens — LIGHT (default) ========== */
+/* ========== Theme tokens — Dark only ========== */
 :root {
-  --bg: #fafafa;
-  --bg-soft: #ffffff;
-  --surface: rgba(0, 0, 0, 0.03);
-  --surface-2: rgba(0, 0, 0, 0.06);
-  --border: rgba(0, 0, 0, 0.08);
-  --border-strong: rgba(0, 0, 0, 0.16);
-
-  --text: #0a0a14;
-  --text-soft: #4a4a52;
-  --text-dim: #8a8a92;
-
-  --nav-bg: rgba(250, 250, 250, 0.7);
-  --nav-bg-scrolled: rgba(250, 250, 250, 0.92);
-  --mobile-menu-bg: rgba(250, 250, 250, 0.98);
-
-  --grid-line: rgba(0, 0, 0, 0.05);
-  --overlay-soft: rgba(0, 0, 0, 0.03);
-  --overlay-medium: rgba(0, 0, 0, 0.06);
-
-  --mock-bg: #ffffff;
-  --mock-tile-bg: rgba(0, 0, 0, 0.04);
-
-  --code-bg: #f6f8fa;
-  --code-text: #1f2328;
-  --code-head-bg: rgba(0, 0, 0, 0.025);
-  --code-kw: #cf222e;
-  --code-var: #0550ae;
-  --code-prop: #1f883d;
-  --code-str: #0a3069;
-  --code-fn: #8250df;
-  --code-param: #953800;
-
-  --orb-opacity: 0.35;
-  --shadow-card: 0 20px 50px -25px rgba(0, 0, 0, 0.25);
-  --shadow-mock: 0 30px 60px -25px rgba(0, 0, 0, 0.3), 0 0 60px -20px rgba(139, 92, 246, 0.25);
-
-  /* Brand & shared (do not change with theme) */
-  --accent-1: #8b5cf6;
-  --accent-2: #06b6d4;
-  --accent-3: #f472b6;
-  --accent-grad: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 50%, #f472b6 100%);
-  --accent-grad-soft: linear-gradient(135deg, rgba(139,92,246,.18), rgba(6,182,212,.18));
-
-  --radius: 16px;
-  --radius-lg: 24px;
-
-  --max-w: 1200px;
-  --ease: cubic-bezier(0.65, 0, 0.05, 1);
-
-  --font-display: 'Outfit', system-ui, sans-serif;
-  --font-body: 'Space Grotesk', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
-}
-
-/* ========== Theme tokens — DARK ========== */
-:root.dark {
   --bg: #07070d;
   --bg-soft: #0d0d18;
   --surface: rgba(255, 255, 255, 0.03);
@@ -94,7 +38,27 @@
   --orb-opacity: 0.5;
   --shadow-card: 0 20px 50px -20px rgba(0, 0, 0, 0.6);
   --shadow-mock: 0 30px 60px -20px rgba(0, 0, 0, 0.7), 0 0 60px -20px rgba(139, 92, 246, 0.3);
+
+  /* Brand */
+  --accent-1: #8b5cf6;
+  --accent-2: #06b6d4;
+  --accent-3: #f472b6;
+  --accent-grad: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 50%, #f472b6 100%);
+  --accent-grad-soft: linear-gradient(135deg, rgba(139,92,246,.18), rgba(6,182,212,.18));
+
+  --radius: 16px;
+  --radius-lg: 24px;
+
+  --max-w: 1200px;
+  --ease: cubic-bezier(0.65, 0, 0.05, 1);
+
+  --font-display: 'Outfit', system-ui, sans-serif;
+  --font-body: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 }
+
+/* force a deep color-scheme so the browser UI (scrollbars, form controls) matches */
+:root { color-scheme: dark; }
 
 /* ========== Smooth scroll plumbing ========== */
 html {
@@ -156,6 +120,7 @@ body {
   /* Avoid iOS Safari rubber-band side-scrolling on transformed elements */
   overscroll-behavior-x: none;
 }
+
 
 img, svg, video { max-width: 100%; height: auto; }
 
@@ -239,12 +204,44 @@ ul { list-style: none; }
   align-items: center;
   gap: 24px;
   margin-bottom: 70px;
+  position: relative;
+  z-index: 1;
 }
 .section-head.center {
   justify-content: center;
   flex-direction: column;
   gap: 16px;
   text-align: center;
+}
+
+/* Giant background watermark text behind each section title */
+.section-head[data-watermark]::before {
+  content: attr(data-watermark);
+  position: absolute;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(7rem, 18vw, 16rem);
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--text);
+  opacity: 0.04;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: -1;
+  white-space: nowrap;
+  text-transform: uppercase;
+  user-select: none;
+}
+.section-head[data-watermark] > * { position: relative; z-index: 1; }
+
+@media (max-width: 640px) {
+  .section-head[data-watermark]::before {
+    font-size: clamp(5rem, 22vw, 9rem);
+    opacity: 0.05;
+  }
 }
 .section-num {
   font-family: var(--font-mono);

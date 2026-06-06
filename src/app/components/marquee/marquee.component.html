@@ -1,0 +1,16 @@
+<div class="marquee"
+     [class.reverse]="reverse"
+     [attr.data-size]="size"
+     [attr.data-variant]="variant"
+     aria-hidden="true">
+  <div class="marquee-track" [style.animation-duration.s]="duration">
+    @for (r of repeats; track r) {
+      <div class="marquee-group">
+        @for (item of items; track $index) {
+          <span class="marquee-item">{{ item }}</span>
+          <span class="marquee-sep">{{ separator }}</span>
+        }
+      </div>
+    }
+  </div>
+</div>

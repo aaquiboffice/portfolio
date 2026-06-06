@@ -1,19 +1,20 @@
 <section class="section contact" id="contact">
   <div class="container">
-    <div class="section-head center">
+    <div class="section-head center" data-watermark="Hello">
       <div class="section-num">06</div>
       <h2 class="section-title">Let's <span class="gradient-text">Connect</span></h2>
       <div class="section-line center"></div>
     </div>
 
-    <div class="contact-card" appReveal>
+    <div class="contact-card" appReveal appTilt [tiltMax]="4">
+      <div class="contact-spot"></div>
       <h3>Got a project in mind?</h3>
       <p>
         I'm currently open to new opportunities — full-time roles, freelance work, or
         interesting collaborations. My inbox is always open. Let's build something great together.
       </p>
 
-      <a href="mailto:aaquibrodde19@gmail.com" class="btn btn-primary btn-large">
+      <a href="mailto:aaquibrodde19@gmail.com" class="btn btn-primary btn-large" [appMagnetic]="0.35">
         <span>Say Hello</span>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M5 12h14M12 5l7 7-7 7"/>

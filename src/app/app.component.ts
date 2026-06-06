@@ -4,6 +4,8 @@ import { BackgroundComponent } from './components/background/background.componen
 import { NavComponent } from './components/nav/nav.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ScrollProgressComponent } from './components/scroll-progress/scroll-progress.component';
+import { PreloaderComponent } from './components/preloader/preloader.component';
+import { SideRailComponent } from './components/side-rail/side-rail.component';
 import { LenisService } from './services/lenis.service';
 
 @Component({
@@ -14,7 +16,9 @@ import { LenisService } from './services/lenis.service';
     BackgroundComponent,
     NavComponent,
     FooterComponent,
-    ScrollProgressComponent
+    ScrollProgressComponent,
+    PreloaderComponent,
+    SideRailComponent
   ],
   templateUrl: './app.component.html'
 })
