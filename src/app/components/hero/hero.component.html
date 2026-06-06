@@ -1,0 +1,58 @@
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-tag" appReveal>
+      <span class="pulse"></span> Available for new opportunities
+    </div>
+
+    <h1 class="hero-title" appReveal>
+      <span class="line">Hi, I'm <span class="gradient-text">Aaquib</span></span>
+      <span class="line">
+        I build
+        <span class="rotating-text"
+              [style.opacity]="rotatingVisible() ? 1 : 0"
+              [style.transform]="rotatingVisible() ? 'translateY(0)' : 'translateY(-10px)'">
+          {{ rotatingWord() }}
+        </span>
+      </span>
+      <span class="line">web experiences.</span>
+    </h1>
+
+    <p class="hero-sub" appReveal>
+      MEAN Stack Developer crafting fast, modern, and user-friendly web applications
+      with <strong>Angular</strong>, <strong>Node.js</strong>, <strong>Express</strong>, and <strong>MongoDB</strong>.
+    </p>
+
+    <div class="hero-cta" appReveal>
+      <a routerLink="/projects" class="btn btn-primary">
+        <span>View My Work</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+      <a routerLink="/contact" class="btn btn-ghost">Get in Touch</a>
+    </div>
+
+    <div class="hero-stats" appReveal>
+      @for (stat of stats(); track $index; let last = $last) {
+        <div class="stat">
+          <div class="stat-num" #statEl>{{ stat.current }}{{ stat.current === stat.target ? stat.suffix : '' }}</div>
+          <div class="stat-label">{{ stat.label1 }}<br>{{ stat.label2 }}</div>
+        </div>
+        @if (!last) { <div class="stat-divider"></div> }
+      }
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+
+  <div class="floating-badges">
+    <div class="badge badge-1">Angular</div>
+    <div class="badge badge-2">Node.js</div>
+    <div class="badge badge-3">MongoDB</div>
+    <div class="badge badge-4">TypeScript</div>
+    <div class="badge badge-5">Express</div>
+  </div>
+</section>

@@ -1,0 +1,83 @@
+<section class="section about" id="about">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num">02</div>
+      <h2 class="section-title"><span class="gradient-text">About</span> Me</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text" appReveal>
+        <p class="lead">
+          I'm a <strong>MEAN Stack Developer</strong> passionate about building digital
+          products that feel as good as they look.
+        </p>
+        <p>
+          With hands-on experience in <strong>MongoDB, Express, Angular, and Node.js</strong>,
+          I specialize in turning ideas into fast, scalable, and accessible web applications.
+          I love writing clean code, optimizing performance, and shipping polished UI.
+        </p>
+        <p>
+          Currently working at <strong>Dealmoney Commodities Pvt Ltd.</strong> as a MEAN Stack
+          Developer where I build secure RESTful APIs, design reusable Angular components,
+          and collaborate with cross-functional teams to deliver real-world solutions.
+        </p>
+
+        <div class="about-meta">
+          @for (item of meta; track item.label) {
+            <div class="meta-item">
+              <span class="meta-label">{{ item.label }}</span>
+              <span class="meta-value">
+                @if (item.online) { <span class="dot"></span> }
+                {{ item.value }}
+              </span>
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="about-visual" appReveal>
+        <div class="code-card">
+          <div class="code-head">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="code-title">developer.ts</span>
+          </div>
+<pre class="code-body"><span class="kw">const</span> <span class="var">aaquib</span> = &#123;
+  <span class="prop">name</span>: <span class="str">'Mohd Aaquib Rodde'</span>,
+  <span class="prop">role</span>: <span class="str">'MEAN Stack Developer'</span>,
+  <span class="prop">stack</span>: [<span class="str">'Angular'</span>, <span class="str">'Node.js'</span>,
+           <span class="str">'Express'</span>, <span class="str">'MongoDB'</span>],
+  <span class="prop">passions</span>: [
+    <span class="str">'Clean UI/UX'</span>,
+    <span class="str">'Performance'</span>,
+    <span class="str">'Problem Solving'</span>
+  ],
+  <span class="prop">currentlyLearning</span>: <span class="str">'∞'</span>,
+  <span class="fn">build</span>(<span class="param">idea</span>) &#123;
+    <span class="kw">return</span> <span class="str">`✨ $&#123;</span><span class="param">idea</span><span class="str">&#125; shipped.`</span>;
+  &#125;
+&#125;;</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="skills-section">
+      <h3 class="skills-title" appReveal>Tech I work with</h3>
+      <div class="skills-grid">
+        @for (group of skills; track group.title) {
+          <div class="skill-card" appReveal>
+            <div class="skill-icon">{{ group.icon }}</div>
+            <h4>{{ group.title }}</h4>
+            <div class="skill-tags">
+              @for (tag of group.tags; track tag) {
+                <span>{{ tag }}</span>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

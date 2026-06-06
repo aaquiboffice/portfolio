@@ -1,0 +1,226 @@
+:host { display: contents; }
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+.project-card {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 50px;
+  align-items: center;
+
+  &.reverse {
+    grid-template-columns: 1fr 1.1fr;
+    .project-visual { order: 2; }
+  }
+}
+
+.project-visual { position: relative; }
+
+.project-mock {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  background: var(--mock-bg);
+  box-shadow: var(--shadow-mock);
+  transform: perspective(1200px) rotateY(-3deg) rotateX(2deg);
+  transition: transform 0.6s var(--ease), background-color 0.4s ease, border-color 0.4s ease;
+}
+.project-card.reverse .project-mock {
+  transform: perspective(1200px) rotateY(3deg) rotateX(2deg);
+}
+
+.mock-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: var(--overlay-soft);
+  border-bottom: 1px solid var(--border);
+
+  .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+}
+.mock-url {
+  margin-left: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  padding: 4px 12px;
+  background: var(--overlay-soft);
+  border-radius: 6px;
+  flex: 1;
+  text-align: center;
+}
+
+.mock-body {
+  padding: 0;
+  height: 320px;
+  overflow: hidden;
+  display: flex;
+}
+
+/* FCH mockup */
+.mock-fch {
+  .mock-sidebar {
+    width: 70px;
+    background: var(--overlay-soft);
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-right: 1px solid var(--border);
+  }
+  .mock-logo {
+    width: 100%; height: 36px;
+    background: var(--accent-grad);
+    border-radius: 8px;
+    margin-bottom: 12px;
+  }
+  .mock-nav {
+    height: 32px;
+    background: var(--overlay-medium);
+    border-radius: 6px;
+
+    &.active {
+      background: var(--accent-grad-soft);
+      border: 1px solid var(--accent-1);
+    }
+  }
+  .mock-main {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+}
+.mock-title-bar {
+  height: 24px;
+  width: 60%;
+  background: linear-gradient(to right, var(--overlay-medium), var(--overlay-soft));
+  border-radius: 6px;
+}
+.mock-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+.mock-stat {
+  height: 70px;
+  background: linear-gradient(135deg, rgba(139,92,246,0.15), rgba(6,182,212,0.1));
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.mock-chart {
+  flex: 1;
+  background: var(--overlay-soft);
+  border-radius: 10px;
+  background-image:
+    linear-gradient(90deg, transparent 49%, rgba(139,92,246,0.4) 50%, transparent 51%),
+    linear-gradient(135deg, transparent 70%, rgba(6,182,212,0.4) 75%, transparent 80%);
+  background-size: 100% 100%;
+}
+
+/* OLT mockup */
+.mock-olt {
+  padding: 20px;
+  flex-direction: column;
+  gap: 14px;
+
+  .mock-top {
+    display: flex;
+    gap: 8px;
+  }
+  .mock-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+}
+.mock-pill {
+  height: 28px;
+  width: 70px;
+  background: var(--overlay-medium);
+  border-radius: 999px;
+
+  &.active { background: var(--accent-grad); }
+}
+.mock-tile {
+  height: 50px;
+  background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(244,114,182,0.05));
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.mock-table {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  .row {
+    height: 22px;
+    background: var(--mock-tile-bg);
+    border-radius: 4px;
+  }
+}
+
+.project-label {
+  font-family: var(--font-mono);
+  color: var(--accent-1);
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.project-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+
+.project-desc {
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 18px;
+  backdrop-filter: blur(10px);
+
+  p {
+    color: var(--text-soft);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  ::ng-deep strong { color: var(--text); font-weight: 600; }
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  li {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-soft);
+    padding: 4px 0;
+  }
+}
+
+@media (max-width: 960px) {
+  .project-card,
+  .project-card.reverse {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .project-card.reverse .project-visual { order: 0; }
+}
+
+@media (max-width: 600px) {
+  .mock-body { height: 260px; }
+}

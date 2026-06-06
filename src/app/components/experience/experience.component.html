@@ -1,0 +1,54 @@
+<section class="section experience" id="experience">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num">03</div>
+      <h2 class="section-title"><span class="gradient-text">Experience</span></h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="timeline">
+      @for (item of items; track item.title) {
+        <div class="timeline-item" appReveal>
+          <div class="timeline-marker">
+            <div class="marker-dot"></div>
+            @if (item.showLine) { <div class="marker-line"></div> }
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-card">
+              <div class="timeline-head">
+                <div>
+                  <h3>{{ item.title }}</h3>
+                  <div class="company">
+                    {{ item.company }}
+                    @if (item.location) { <span class="loc">· {{ item.location }}</span> }
+                  </div>
+                </div>
+                <span class="period">{{ item.period }}</span>
+              </div>
+
+              @if (item.bullets) {
+                <ul class="timeline-list">
+                  @for (bullet of item.bullets; track bullet) {
+                    <li [innerHTML]="bullet"></li>
+                  }
+                </ul>
+              }
+
+              @if (item.description) {
+                <p class="edu-note" [innerHTML]="item.description"></p>
+              }
+
+              @if (item.tech) {
+                <div class="tech-row">
+                  @for (t of item.tech; track t) {
+                    <span>{{ t }}</span>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

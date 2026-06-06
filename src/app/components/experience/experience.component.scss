@@ -1,0 +1,136 @@
+:host { display: contents; }
+
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.timeline-marker {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.marker-dot {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--accent-grad);
+  margin-top: 28px;
+  box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--accent-1);
+  position: relative;
+  z-index: 2;
+}
+.marker-line {
+  position: absolute;
+  top: 50px; left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: calc(100% + 40px);
+  background: linear-gradient(to bottom, var(--accent-1), transparent);
+}
+
+.timeline-card {
+  padding: 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: all 0.4s ease;
+
+  &:hover {
+    border-color: var(--border-strong);
+    background: var(--surface-2);
+    transform: translateX(4px);
+  }
+
+  h3 {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+}
+
+.timeline-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.company {
+  font-size: 14px;
+  color: var(--accent-1);
+  font-weight: 500;
+
+  .loc { color: var(--text-dim); font-weight: 400; }
+}
+
+.period {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.timeline-list {
+  margin: 20px 0;
+
+  li {
+    position: relative;
+    padding-left: 20px;
+    color: var(--text-soft);
+    margin-bottom: 10px;
+    font-size: 14.5px;
+    line-height: 1.6;
+
+    &::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent-2);
+    }
+
+    ::ng-deep strong { color: var(--text); font-weight: 600; }
+  }
+}
+
+.tech-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+
+  span {
+    padding: 4px 10px;
+    background: rgba(139, 92, 246, 0.08);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    border-radius: 6px;
+    font-size: 11px;
+    color: var(--accent-1);
+    font-family: var(--font-mono);
+  }
+}
+
+.edu-note {
+  color: var(--text-soft);
+  font-size: 14px;
+
+  ::ng-deep strong { color: var(--text); }
+}
+
+@media (max-width: 960px) {
+  .timeline-card { padding: 24px; }
+}

@@ -1,0 +1,87 @@
+<section class="section projects" id="projects">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num">04</div>
+      <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="project-list">
+      @for (project of projects; track project.title) {
+        <article #card
+                 class="project-card"
+                 [class.reverse]="project.reverse"
+                 appReveal
+                 (mousemove)="onCardMove($event, card)"
+                 (mouseleave)="onCardLeave(card)">
+          <div class="project-visual">
+            <div class="project-mock">
+              <div class="mock-bar">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <div class="mock-url">{{ project.url }}</div>
+              </div>
+
+              @if (project.mockType === 'fch') {
+                <div class="mock-body mock-fch">
+                  <div class="mock-sidebar">
+                    <div class="mock-logo"></div>
+                    <div class="mock-nav"></div>
+                    <div class="mock-nav active"></div>
+                    <div class="mock-nav"></div>
+                    <div class="mock-nav"></div>
+                  </div>
+                  <div class="mock-main">
+                    <div class="mock-title-bar"></div>
+                    <div class="mock-cards">
+                      <div class="mock-stat"></div>
+                      <div class="mock-stat"></div>
+                      <div class="mock-stat"></div>
+                    </div>
+                    <div class="mock-chart"></div>
+                  </div>
+                </div>
+              } @else {
+                <div class="mock-body mock-olt">
+                  <div class="mock-top">
+                    <div class="mock-pill"></div>
+                    <div class="mock-pill"></div>
+                    <div class="mock-pill active"></div>
+                    <div class="mock-pill"></div>
+                  </div>
+                  <div class="mock-grid">
+                    <div class="mock-tile"></div>
+                    <div class="mock-tile"></div>
+                    <div class="mock-tile"></div>
+                    <div class="mock-tile"></div>
+                    <div class="mock-tile"></div>
+                    <div class="mock-tile"></div>
+                  </div>
+                  <div class="mock-table">
+                    <div class="row"></div>
+                    <div class="row"></div>
+                    <div class="row"></div>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+
+          <div class="project-info">
+            <div class="project-label">Featured Project</div>
+            <h3 class="project-title">{{ project.title }}</h3>
+            <div class="project-desc">
+              <p [innerHTML]="project.description"></p>
+            </div>
+            <ul class="project-tech">
+              @for (t of project.tech; track t) {
+                <li>{{ t }}</li>
+              }
+            </ul>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
