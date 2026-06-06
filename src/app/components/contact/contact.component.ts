@@ -20,6 +20,6 @@ interface ContactLink {
 export class ContactComponent {
   readonly links: ContactLink[] = [
     { href: 'mailto:aaquibrodde19@gmail.com',          label: 'aaquibrodde19@gmail.com',    icon: 'mail' },
-    { href: 'https://linkedin.com/in/Aauib-rodde',     label: 'linkedin.com/in/Aauib-rodde', icon: 'linkedin', external: true }
+    { href: 'https://www.linkedin.com/in/aaquib-rodde-4ba888319', label: 'linkedin.com/in/aaquib-rodde', icon: 'linkedin', external: true }
   ];
 }
