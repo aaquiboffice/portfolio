@@ -175,13 +175,47 @@
   50%      { transform: translateY(-15px); }
 }
 
+/* Tablet */
 @media (max-width: 960px) {
+  .hero { padding: 120px 28px 70px; }
   .floating-badges { display: none; }
-  .hero-stats { flex-direction: column; gap: 24px; }
-  .stat-divider { width: 50px; height: 1px; }
+  .hero-stats { gap: 32px; padding: 22px 32px; }
+  .stat-num { font-size: 2.1rem; }
 }
 
-@media (max-width: 600px) {
-  .hero { padding-top: 110px; }
-  .hero-cta { flex-direction: column; align-items: stretch; }
+/* Large mobile */
+@media (max-width: 640px) {
+  .hero { padding: 110px 18px 56px; min-height: auto; }
+  .hero-tag { font-size: 12px; padding: 7px 14px; margin-bottom: 24px; }
+  .hero-sub { font-size: 1rem; margin-bottom: 32px; }
+  .hero-cta { gap: 12px; margin-bottom: 56px; }
+  .hero-stats {
+    flex-direction: column;
+    gap: 22px;
+    padding: 22px 28px;
+    width: 100%;
+    max-width: 320px;
+  }
+  .stat-divider { width: 60px; height: 1px; }
+  .stat-num { font-size: 1.9rem; }
+  .stat-label { font-size: 11px; }
+  .scroll-hint { bottom: 20px; font-size: 10px; }
+  .scroll-line { height: 36px; }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .hero { padding: 100px 16px 48px; }
+  .hero-cta { flex-direction: column; align-items: stretch; width: 100%; }
+  .hero-cta .btn { width: 100%; justify-content: center; }
+  .hero-stats { padding: 20px 24px; }
+  .stat-num { font-size: 1.75rem; }
+}
+
+/* Tiny phones */
+@media (max-width: 360px) {
+  .hero { padding: 96px 14px 40px; }
+  .hero-tag { font-size: 11px; }
+  .hero-sub { font-size: 0.95rem; }
+  .hero-stats { padding: 18px 20px; }
 }

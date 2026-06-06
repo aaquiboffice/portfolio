@@ -8,6 +8,7 @@ import { AboutComponent } from '../../components/about/about.component';
 import { ExperienceComponent } from '../../components/experience/experience.component';
 import { ProjectsComponent } from '../../components/projects/projects.component';
 import { ContactComponent } from '../../components/contact/contact.component';
+import { LenisService } from '../../services/lenis.service';
 
 const SECTION_IDS = ['home', 'about', 'experience', 'projects', 'contact'] as const;
 type SectionId = typeof SECTION_IDS[number];
@@ -28,6 +29,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   private readonly router = inject(Router);
   private readonly zone = inject(NgZone);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly lenis = inject(LenisService);
 
   private lastSyncedPath = '';
   private suppressScrollSpyUntil = 0;
@@ -48,16 +50,17 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   private scrollToSection(id: SectionId, behavior: ScrollBehavior): void {
-    this.suppressScrollSpyUntil = Date.now() + 900;
+    this.suppressScrollSpyUntil = Date.now() + 1300;
+    const immediate = behavior === 'auto';
 
     requestAnimationFrame(() => {
       if (id === 'home') {
-        window.scrollTo({ top: 0, behavior });
+        this.lenis.scrollTo(0, { immediate, offset: 0 });
         return;
       }
       const target = document.getElementById(id);
       if (target) {
-        target.scrollIntoView({ behavior, block: 'start' });
+        this.lenis.scrollTo(target, { immediate, offset: -90 });
       }
     });
   }

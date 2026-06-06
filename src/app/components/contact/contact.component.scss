@@ -67,6 +67,31 @@
   svg { color: var(--accent-1); }
 }
 
+/* Tablet */
 @media (max-width: 960px) {
-  .contact-card { padding: 50px 24px; }
+  .contact-card { padding: 56px 28px; }
+}
+
+/* Large mobile */
+@media (max-width: 640px) {
+  .contact-card { padding: 48px 22px; }
+  .contact-card h3 { font-size: clamp(1.5rem, 6vw, 2rem); }
+  .contact-card p { font-size: 0.95rem; margin-bottom: 28px; }
+  .contact-links { margin-top: 36px; padding-top: 28px; gap: 8px; }
+  .contact-link { font-size: 13px; padding: 11px 16px; }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .contact-card { padding: 40px 18px; }
+  .contact-card h3 { line-height: 1.25; }
+  .contact-links { gap: 6px; }
+  .contact-link { font-size: 12.5px; padding: 10px 12px; gap: 10px; }
+  .contact-link svg { width: 18px; height: 18px; }
+}
+
+/* Tiny phones */
+@media (max-width: 360px) {
+  .contact-card { padding: 36px 14px; }
+  .contact-link { font-size: 12px; }
 }

@@ -131,6 +131,37 @@
   ::ng-deep strong { color: var(--text); }
 }
 
+/* Tablet */
 @media (max-width: 960px) {
   .timeline-card { padding: 24px; }
+  .timeline-card h3 { font-size: 1.2rem; }
+}
+
+/* Large mobile */
+@media (max-width: 640px) {
+  .timeline-item { grid-template-columns: 28px 1fr; gap: 16px; margin-bottom: 32px; }
+  .marker-dot { width: 14px; height: 14px; margin-top: 24px; }
+  .timeline-card { padding: 22px 20px; }
+  .timeline-card h3 { font-size: 1.1rem; }
+  .timeline-head { gap: 10px; margin-bottom: 14px; }
+  .company { font-size: 13px; }
+  .period { font-size: 11px; padding: 5px 10px; }
+  .timeline-list li { font-size: 13.5px; padding-left: 18px; }
+  .tech-row span { font-size: 10.5px; padding: 3px 9px; }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .timeline-item { grid-template-columns: 20px 1fr; gap: 12px; }
+  .marker-dot { width: 12px; height: 12px; margin-top: 22px; }
+  .timeline-card { padding: 20px 18px; }
+  .timeline-card h3 { font-size: 1.05rem; }
+  .timeline-head { flex-direction: column; align-items: flex-start; }
+  .period { font-size: 10.5px; }
+}
+
+/* Tiny phones */
+@media (max-width: 360px) {
+  .timeline-card { padding: 18px 16px; }
+  .timeline-list li { font-size: 13px; }
 }

@@ -98,8 +98,8 @@
 
 /* ========== Smooth scroll plumbing ========== */
 html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 90px;       /* keep section tops out from under the fixed nav */
+  scroll-behavior: smooth;            /* fallback when Lenis is disabled (reduced motion) */
+  scroll-padding-top: 90px;            /* keep section tops clear of the fixed nav */
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -107,7 +107,25 @@ html {
 }
 
 section[id] {
-  scroll-margin-top: 90px;         /* belt + suspenders for scrollIntoView targets */
+  scroll-margin-top: 90px;
+}
+
+/* Lenis — let it own the smooth scrolling once it boots */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+html.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+html.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+html.lenis.lenis-stopped {
+  overflow: hidden;
+}
+html.lenis.lenis-smooth iframe {
+  pointer-events: none;
 }
 
 .route-host {
@@ -121,6 +139,8 @@ section[id] {
   animation-duration: 0.35s;
 }
 
+html, body { max-width: 100%; }
+
 body {
   font-family: var(--font-body);
   background: var(--bg);
@@ -132,7 +152,12 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   transition: background-color 0.4s ease, color 0.4s ease;
+
+  /* Avoid iOS Safari rubber-band side-scrolling on transformed elements */
+  overscroll-behavior-x: none;
 }
+
+img, svg, video { max-width: 100%; height: auto; }
 
 ::selection { background: rgba(139, 92, 246, 0.4); color: #fff; }
 
@@ -261,9 +286,41 @@ ul { list-style: none; }
 .dot.green { background: #28c840; }
 
 /* ========== Responsive base ========== */
-@media (max-width: 960px) {
-  .section { padding: 80px 0; }
+/* Laptop and below */
+@media (max-width: 1100px) {
+  .container { padding: 0 28px; }
+}
+
+/* Tablet */
+@media (max-width: 860px) {
+  .section { padding: 90px 0; }
   .container { padding: 0 24px; }
-  .section-head { flex-wrap: wrap; gap: 12px; margin-bottom: 50px; }
+  .section-head { flex-wrap: wrap; gap: 14px; margin-bottom: 56px; }
   .section-line { display: none; }
+  .btn { padding: 12px 22px; font-size: 14.5px; }
+  .btn-large { padding: 16px 28px; font-size: 15px; }
+}
+
+/* Large mobile / small tablet */
+@media (max-width: 640px) {
+  .section { padding: 72px 0; }
+  .container { padding: 0 18px; }
+  .section-head { margin-bottom: 40px; gap: 10px; }
+  .section-num { font-size: 13px; }
+  .btn { padding: 12px 20px; font-size: 14px; gap: 8px; min-height: 44px; }
+  .btn-large { padding: 14px 26px; font-size: 15px; }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .section { padding: 60px 0; }
+  .container { padding: 0 16px; }
+  .btn { width: 100%; justify-content: center; }
+  .section-title { font-size: clamp(1.6rem, 7vw, 2rem); white-space: normal; line-height: 1.2; }
+}
+
+/* Tiny phones */
+@media (max-width: 360px) {
+  .container { padding: 0 14px; }
+  .section { padding: 52px 0; }
 }

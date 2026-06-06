@@ -212,15 +212,58 @@
   }
 }
 
+/* Tablet */
 @media (max-width: 960px) {
+  .project-list { gap: 70px; }
   .project-card,
   .project-card.reverse {
     grid-template-columns: 1fr;
     gap: 30px;
   }
   .project-card.reverse .project-visual { order: 0; }
+  .project-mock,
+  .project-card.reverse .project-mock {
+    transform: perspective(1200px) rotateY(0deg) rotateX(0deg);
+  }
+  .mock-body { height: 280px; }
 }
 
-@media (max-width: 600px) {
-  .mock-body { height: 260px; }
+/* Large mobile */
+@media (max-width: 640px) {
+  .project-list { gap: 56px; }
+  .project-title { font-size: 1.4rem; margin-bottom: 16px; }
+  .project-label { font-size: 12px; }
+  .project-desc { padding: 20px; margin-bottom: 14px; }
+  .project-desc p { font-size: 14px; line-height: 1.65; }
+  .project-tech { gap: 8px; }
+  .project-tech li { font-size: 11.5px; }
+  .mock-body { height: 240px; }
+  .mock-url { font-size: 10px; }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .project-list { gap: 48px; }
+  .project-title { font-size: 1.25rem; }
+  .project-desc { padding: 18px; }
+  .project-desc p { font-size: 13.5px; }
+  .mock-body { height: 200px; }
+  .mock-fch .mock-sidebar { width: 56px; padding: 12px 8px; gap: 8px; }
+  .mock-fch .mock-nav { height: 26px; }
+  .mock-fch .mock-logo { height: 28px; }
+  .mock-fch .mock-main { padding: 14px; gap: 10px; }
+  .mock-cards { gap: 8px; }
+  .mock-stat { height: 50px; }
+  .mock-olt { padding: 14px; gap: 10px; }
+  .mock-pill { height: 22px; width: 54px; }
+  .mock-tile { height: 38px; }
+  .mock-bar { padding: 8px 10px; }
+  .mock-bar .dot { width: 8px; height: 8px; }
+}
+
+/* Tiny phones */
+@media (max-width: 360px) {
+  .mock-body { height: 180px; }
+  .project-desc { padding: 16px; }
+  .mock-fch .mock-sidebar { width: 48px; }
 }
